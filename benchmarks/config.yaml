@@ -1,16 +1,16 @@
 # # path to cluster administrator's kubeconfig file
-adminKubeconfig: /home/phoenix/.kube/config
+# adminKubeconfig: 
 
 # # path to the tenant's kubeconfig and its namespace
-tenantA:
-  kubeconfig: /tmp/kube/k8s-t0-admin0-tenant0admin-conf
-  namespace: tenant0admin
+# tenantA:
+#   kubeconfig: 
+#   namespace: 
 
 # # path to the tenant's kubeconfig and its namespace
 # tenantB:
-#   kubeconfig:
-#   namespace:
+#   kubeconfig: 
+#   namespace: 
 
-# # label is used to identify the resources
+# # label is used to identify the resources 
 # # managed by the cluster administrator
 # label:
