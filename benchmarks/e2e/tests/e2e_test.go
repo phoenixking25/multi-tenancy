@@ -14,7 +14,7 @@ func handleFlags() {
 	config.CopyFlags(config.Flags, flag.CommandLine)
 	framework.RegisterCommonFlags(flag.CommandLine)
 	framework.RegisterClusterFlags(flag.CommandLine)
-	flag.StringVar(&configutil.ConfigPath,"config", "../../config.yaml",
+	flag.StringVar(&configutil.ConfigPath, "config", "./config.yaml",
 		"Path of the config file for the tests")
 }
 

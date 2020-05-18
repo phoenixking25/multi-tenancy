@@ -1,10 +1,10 @@
 # # path to cluster administrator's kubeconfig file
-# adminKubeconfig:
+adminKubeconfig: /home/phoenix/.kube/config
 
 # # path to the tenant's kubeconfig and its namespace
-# tenantA:
-#   kubeconfig:
-#   namespace:
+tenantA:
+  kubeconfig: /tmp/kube/k8s-t0-admin0-tenant0admin-conf
+  namespace: tenant0admin
 
 # # path to the tenant's kubeconfig and its namespace
 # tenantB:
