@@ -21,7 +21,7 @@ import (
 
 var decUnstructured = yaml.NewDecodingSerializer(unstructured.UnstructuredJSONScheme)
 
-func (self *TestClient) CreatePolicy(resourcePath string) error {
+func (client *TestClient) CreatePolicy(resourcePath string) error {
 	var data []byte
 	if strings.Contains(resourcePath, "yaml") {
 		data, err = loadFile(resourcePath)
@@ -73,22 +73,22 @@ func (self *TestClient) CreatePolicy(resourcePath string) error {
 		// Obtain REST interface for the GVR
 		if mapping.Scope.Name() == meta.RESTScopeNameNamespace {
 			// namespaced resources should specify the namespace
-			self.DynamicResource = dyn.Resource(mapping.Resource).Namespace(obj.GetNamespace())
+			client.DynamicResource = dyn.Resource(mapping.Resource).Namespace(obj.GetNamespace())
 		} else {
 			// for cluster-wide resources
-			self.DynamicResource = dyn.Resource(mapping.Resource)
+			client.DynamicResource = dyn.Resource(mapping.Resource)
 		}
 
 		// Create or Update the object with SSA
 		// types.ApplyPatchType indicates SSA.
 		// FieldManager specifies the field owner ID.
-		_, err = self.DynamicResource.Create(self.Context, obj, metav1.CreateOptions{})
+		_, err = client.DynamicResource.Create(client.Context, obj, metav1.CreateOptions{})
 	}
 	return err
 }
 
-func (self *TestClient) DeletePolicy() error {
-	err = self.DynamicResource.Delete(self.Context, self.PolicyName, metav1.DeleteOptions{})
+func (client *TestClient) DeletePolicy() error {
+	err = client.DynamicResource.Delete(client.Context, client.PolicyName, metav1.DeleteOptions{})
 	return err
 }
 
