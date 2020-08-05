@@ -1,0 +1,15 @@
+language: go
+
+go:
+  - '1.13.x'
+
+services:
+  - docker
+
+matrix:
+    include:
+        - env: TARGET=benchmarks/kubectl-mtb
+
+script: if .travis/build-condition.sh $TRAVIS_COMMIT_RANGE $TARGET; then echo "$TARGET is being built" && curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/ && GO111MODULE=on go get sigs.k8s.io/kind && cd $TARGET && make unit-tests; else echo "$TARGET is NOT being built"; fi
+
+
