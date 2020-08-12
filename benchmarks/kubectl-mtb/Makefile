@@ -44,7 +44,6 @@ endif
 	@if [ -z $$(kind get clusters | grep $(KIND_PROFILE)) ]; then\
 		echo "Could not find $(KIND_PROFILE) cluster. Creating...";\
 		kind create cluster --name $(KIND_PROFILE) --wait 5m;\
-		export KUBECONFIG="$(kind get kubeconfig-path)"\
 	fi
 		
 kind-test:
