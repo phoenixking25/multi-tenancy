@@ -22,6 +22,7 @@ before_install:
 
 script:
  - GO111MODULE=on go get -u sigs.k8s.io/kind
+ - kind create cluster
  - make unit-tests
 # jobs:
 #   include:
