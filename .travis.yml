@@ -18,10 +18,7 @@ before_install:
   - if [[ "${GO111MODULE}" = "on" ]]; then mkdir "${HOME}/go"; export GOPATH="${HOME}/go"; fi
   - if [[ -n "${RUN386}" ]]; then export GOARCH=386; fi
   - cd $TARGET 
-  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-  - curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.8.1/kind-linux-amd64
-  - chmod +x ./kind
-  - mkdir ${HOME}/go/bin/ && mv ./kind ${HOME}/go/bin/
+  - GO111MODULE=on go get sigs.k8s.io/kind
 
 script:
  - make unit-tests
