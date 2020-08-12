@@ -21,7 +21,7 @@ before_install:
   - cd $TARGET 
 
 script:
- - GO111MODULE=on go get sigs.k8s.io/kind
+ - GO111MODULE=on go get -u sigs.k8s.io/kind
  - make unit-tests
 # jobs:
 #   include:
